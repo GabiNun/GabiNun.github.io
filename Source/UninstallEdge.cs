@@ -5,7 +5,7 @@ class Program
     static void Main()
     {
         string directoryPath = @"C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\";
-        System.IO.Directory.CreateDirectory(directoryPath);
+        Directory.CreateDirectory(directoryPath);
 
         string filePath = Path.Combine(directoryPath, "MicrosoftEdge.exe");
         File.Create(filePath).Close();
@@ -16,3 +16,4 @@ class Program
     }
 
 }
+
