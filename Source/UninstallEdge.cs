@@ -1,18 +1,15 @@
 using System.IO;
+using System.Diagnostics;
 
 class Program
 {
     static void Main()
     {
-        string directoryPath = @"C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\";
-        Directory.CreateDirectory(directoryPath);
+        Directory.CreateDirectory(@"C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe");
+        File.Create(@"C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe").Close();
 
-        string filePath = Path.Combine(directoryPath, "MicrosoftEdge.exe");
-        File.Create(filePath).Close();
-         
-        var setup = System.Linq.Enumerable.First(Directory.EnumerateFiles(@"C:\Program Files (x86)\Microsoft\Edge\Application", "setup.exe", SearchOption.AllDirectories));
+        var setup = Directory.GetFiles(@"C:\Program Files (x86)\Microsoft\Edge\Application", "setup.exe", SearchOption.AllDirectories)[0];
 
-        System.Diagnostics.Process.Start(setup, "--uninstall --system-level --force-uninstall --delete-profile");    
+        Process.Start(setup, "--uninstall --system-level --force-uninstall --delete-profile");
     }
-
 }
