@@ -12,10 +12,9 @@ class Program
         string filePath = System.IO.Path.Combine(directoryPath, "MicrosoftEdge.exe");
         System.IO.File.Create(filePath).Close();
          
-        var setup = System.Linq.Enumerable.First(
-            Directory.EnumerateFiles(@"C:\Program Files (x86)\Microsoft\Edge\Application", "setup.exe", SearchOption.AllDirectories)
-        );
+        var setup = System.Linq.Enumerable.First(Directory.EnumerateFiles(@"C:\Program Files (x86)\Microsoft\Edge\Application", "setup.exe", SearchOption.AllDirectories));
 
         Process.Start(setup, "--uninstall --system-level --force-uninstall --delete-profile");    
     }
+
 }
