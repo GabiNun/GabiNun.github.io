@@ -4,11 +4,11 @@ class Program
 {
     static void Main()
     {
-        var Setup = Directory.GetFiles(@"C:\Program Files (x86)\Microsoft\Edge\Application", "setup.exe", SearchOption.AllDirectories)[0];
-        var UWP = @"C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe";
+        var Setup = Path.Combine(Directory.GetDirectories(@"C:\Program Files (x86)\Microsoft\Edge\Application")[0], "Installer", "setup.exe");
+        var Folder = @"C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe";
         
-        Directory.CreateDirectory(UWP);
-        File.Create(Path.Combine(UWP, "MicrosoftEdge.exe")).Close();
+        Directory.CreateDirectory(Folder);
+        File.Create(Path.Combine(Folder, "MicrosoftEdge.exe")).Close();
 
         System.Diagnostics.Process.Start(Setup, "--uninstall --system-level --force-uninstall --delete-profile");
     }
