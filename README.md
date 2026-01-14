@@ -1,4 +1,4 @@
 Compile command:
 ```powershell
-csc /win32icon:UninstallEdge.ico UninstallEdge.cs
+csc /target:winexe /win32icon:UninstallEdge.ico UninstallEdge.cs
 ```
